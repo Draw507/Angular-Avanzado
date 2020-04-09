@@ -5,11 +5,13 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { NopageFoundComponent } from './nopage-found/nopage-found.component';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { PipesModule } from '../pipes/pipes.module';
 
 @NgModule({
     imports: [
         RouterModule,
-        CommonModule
+        CommonModule,
+        PipesModule
     ],
     declarations: [
         NopageFoundComponent,
