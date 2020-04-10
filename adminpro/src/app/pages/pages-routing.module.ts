@@ -10,6 +10,7 @@ import { RxjsComponent } from './rxjs/rxjs.component';
 import { LoginGuard } from '../services/guards/login-guard.guard';
 import { ProfileComponent } from './profile/profile.component';
 import { UsuariosComponent } from './usuarios/usuarios.component';
+import { AdminGuard } from '../services/guards/admin.guard';
 
 
 const pagesRoutes: Routes = [
@@ -26,7 +27,12 @@ const pagesRoutes: Routes = [
           { path: 'account-settings', component: AccountSettingsComponent, data: { titulo: 'Ajustes del Tema' } },
           { path: 'perfil', component: ProfileComponent, data: { titulo: 'Perfil de Usuario' } },
           //Matenimientos
-          { path: 'usuarios', component: UsuariosComponent, data: { titulo: 'Mantenimiento de usuarios' } },
+          { 
+            path: 'usuarios',
+            canActivate: [ AdminGuard ],
+            component: UsuariosComponent,
+            data: { titulo: 'Mantenimiento de usuarios' }
+          },
           { path: '', redirectTo: '/dashboard', pathMatch: 'full' }
       ]
   }

@@ -3,7 +3,8 @@ import { Usuario } from '../../models/usuario.model';
 import { HttpClient } from '@angular/common/http';
 import { URL_SERVICIOS } from '../../config/config';
 import Swal from 'sweetalert2';
-import { map } from 'rxjs/operators';
+import { map, catchError  } from 'rxjs/operators';
+import {Observable, throwError} from 'rxjs';
 import { Router } from '@angular/router';
 import { SubirArchivoService } from '../subir-archivo/subir-archivo.service';
 
@@ -78,7 +79,16 @@ export class UsuarioService {
     .pipe(map((resp: any) => {
       this.guardarStorage(resp.id, resp.token, resp.usuario);
       return true;
-    }));
+    }),
+    catchError(err => {
+
+      console.log(err.status);
+
+      return throwError(err.message);
+
+    })
+
+  );
   }
 
   crearUsuario(usuario: Usuario) {
