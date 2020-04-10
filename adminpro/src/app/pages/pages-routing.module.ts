@@ -13,29 +13,49 @@ import { UsuariosComponent } from './usuarios/usuarios.component';
 import { AdminGuard } from '../services/guards/admin.guard';
 
 
+// const pagesRoutes: Routes = [
+//   {
+//       path: '',
+//       component: PagesComponent,
+//       canActivate: [ LoginGuard ],
+//       children: [
+//           { path: 'dashboard', component: DashboardComponent, data: { titulo: 'Dashboard' } },
+//           { path: 'progress', component: ProgressComponent, data: { titulo: 'Progress' } },
+//           { path: 'graficas1', component: Graficas1Component , data: { titulo: 'Gráficas' }},
+//           { path: 'promesas', component: PromesasComponent, data: { titulo: 'Promesas' } },
+//           { path: 'rxjs', component: RxjsComponent, data: { titulo: 'RxJs' } },
+//           { path: 'account-settings', component: AccountSettingsComponent, data: { titulo: 'Ajustes del Tema' } },
+//           { path: 'perfil', component: ProfileComponent, data: { titulo: 'Perfil de Usuario' } },
+//           //Matenimientos
+//           { 
+//             path: 'usuarios',
+//             canActivate: [ AdminGuard ],
+//             component: UsuariosComponent,
+//             data: { titulo: 'Mantenimiento de usuarios' }
+//           },
+//           { path: '', redirectTo: '/dashboard', pathMatch: 'full' }
+//       ]
+//   }
+// ];
+
+
+// LAZY LOAD
 const pagesRoutes: Routes = [
+  { path: 'dashboard', component: DashboardComponent, data: { titulo: 'Dashboard' } },
+  { path: 'progress', component: ProgressComponent, data: { titulo: 'Progress' } },
+  { path: 'graficas1', component: Graficas1Component , data: { titulo: 'Gráficas' }},
+  { path: 'promesas', component: PromesasComponent, data: { titulo: 'Promesas' } },
+  { path: 'rxjs', component: RxjsComponent, data: { titulo: 'RxJs' } },
+  { path: 'account-settings', component: AccountSettingsComponent, data: { titulo: 'Ajustes del Tema' } },
+  { path: 'perfil', component: ProfileComponent, data: { titulo: 'Perfil de Usuario' } },
+  //Matenimientos
   {
-      path: '',
-      component: PagesComponent,
-      canActivate: [ LoginGuard ],
-      children: [
-          { path: 'dashboard', component: DashboardComponent, data: { titulo: 'Dashboard' } },
-          { path: 'progress', component: ProgressComponent, data: { titulo: 'Progress' } },
-          { path: 'graficas1', component: Graficas1Component , data: { titulo: 'Gráficas' }},
-          { path: 'promesas', component: PromesasComponent, data: { titulo: 'Promesas' } },
-          { path: 'rxjs', component: RxjsComponent, data: { titulo: 'RxJs' } },
-          { path: 'account-settings', component: AccountSettingsComponent, data: { titulo: 'Ajustes del Tema' } },
-          { path: 'perfil', component: ProfileComponent, data: { titulo: 'Perfil de Usuario' } },
-          //Matenimientos
-          { 
-            path: 'usuarios',
-            canActivate: [ AdminGuard ],
-            component: UsuariosComponent,
-            data: { titulo: 'Mantenimiento de usuarios' }
-          },
-          { path: '', redirectTo: '/dashboard', pathMatch: 'full' }
-      ]
-  }
+    path: 'usuarios',
+    canActivate: [ AdminGuard ],
+    component: UsuariosComponent,
+    data: { titulo: 'Mantenimiento de usuarios' }
+  },
+  { path: '', redirectTo: '/dashboard', pathMatch: 'full' }
 ];
 
 export const PAGES_ROUTES = RouterModule.forChild( pagesRoutes );

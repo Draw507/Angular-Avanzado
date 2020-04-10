@@ -26,7 +26,7 @@ import { UsuariosComponent } from './usuarios/usuarios.component';
         DashboardComponent,
         ProgressComponent,
         Graficas1Component,
-        PagesComponent,
+        //PagesComponent,
         IncrementadorComponent,
         GraficoDonaComponent,
         AccountSettingsComponent,
@@ -38,8 +38,7 @@ import { UsuariosComponent } from './usuarios/usuarios.component';
     exports: [
         DashboardComponent,
         ProgressComponent,
-        Graficas1Component,
-        PagesComponent
+        Graficas1Component
     ],
     imports: [
         PAGES_ROUTES,
