@@ -11,6 +11,7 @@ import { LoginGuard } from '../services/guards/login-guard.guard';
 import { ProfileComponent } from './profile/profile.component';
 import { UsuariosComponent } from './usuarios/usuarios.component';
 import { AdminGuard } from '../services/guards/admin.guard';
+import { VerificatokenGuard } from '../services/guards/verificatoken.guard';
 
 
 // const pagesRoutes: Routes = [
@@ -41,7 +42,12 @@ import { AdminGuard } from '../services/guards/admin.guard';
 
 // LAZY LOAD
 const pagesRoutes: Routes = [
-  { path: 'dashboard', component: DashboardComponent, data: { titulo: 'Dashboard' } },
+  {
+    path: 'dashboard',
+    canActivate: [ VerificatokenGuard ],
+    component: DashboardComponent,
+    data: { titulo: 'Dashboard' }
+  },
   { path: 'progress', component: ProgressComponent, data: { titulo: 'Progress' } },
   { path: 'graficas1', component: Graficas1Component , data: { titulo: 'Gráficas' }},
   { path: 'promesas', component: PromesasComponent, data: { titulo: 'Promesas' } },

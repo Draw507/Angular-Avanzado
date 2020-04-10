@@ -17,7 +17,6 @@ export class AdminGuard implements CanActivate {
     if (this.usuarioService.usuario.role === 'ADMIN_ROLE') {
       return true;
     } else {
-      console.log('Bloqueado');
       this.usuarioService.logout();
       return false;
     }
